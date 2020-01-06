@@ -1,0 +1,400 @@
+/*
+ Theme Name:   Twenty Nineteen Child
+ Theme URI:    http://example.com/twenty-nineteen-child/
+ Description:  Twenty Nineteen Child Theme
+ Author:       Aleix Martí Carmona
+ Author URI:   http://example.com
+ Template:     twentynineteen
+ Version:      1.0.0
+ License:      GNU General Public License v2 or later
+ License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+ Tags:         light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready
+ Text Domain:  twentynineteenchild
+*/
+
+@font-face {
+  font-family: starjedi;
+  src: url(assets/Starjedi.ttf);
+}
+
+
+/******************************/
+/* Color variables definition */
+/******************************/
+
+:root {
+   --red: rgb(185, 0, 0);
+   --yellow: hsl(60,100%,50%);
+   --yellow-alt: hsl(60,100%,30%);
+   --blue: hsl(199,100%,33%);
+   --blue-alt: hsl(199,100%,23%);
+   --black: #111;
+   --darkgray: #222;
+   --lightgray: #ddd;
+   --white:#fff; 
+}
+
+
+/***********************************/
+/* Dark theme variables definition */
+/***********************************/
+
+[data-theme="dark"] {
+    --bg-color: var(--darkgray);
+    --bg-color-alt: var(--black);
+    --text-color: var(--yellow);
+    --icon: '#';
+    --laser: var(--red);
+    --button: var(--yellow);
+    --button-alt: var(--yellow-alt);  
+    --button-text: var(--darkgray);
+    --button-text-alt: var(--darkgray);
+    --link-color: var(--yellow);
+    --link-color-alt: var(--yellow-alt);
+    --input-bg: var(--lightgray);
+    --main-entry-color: var(--yellow);
+}
+
+
+/************************************/
+/* Light theme variables definition */
+/************************************/
+
+[data-theme="light"] {
+    --bg-color: var(--white);
+    --bg-color-alt: var(--lightgray);
+    --text-color: var(--darkgray);
+    --icon: '$';
+    --laser: var(--blue);
+    --button: var(--blue);
+    --button-alt: var(--darkgray); 
+    --button-text: var(--white);
+    --button-text-alt: var(--white); 
+    --link-color: var(--blue);
+    --link-color-alt: var(--blue-alt);
+    --input-bg: var(--white);
+    --main-entry-color: var(--white);
+}
+
+
+/********************/
+/* Main body styles */
+/********************/
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);    
+    transition: all .3s;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/*********************/
+/* Site title styles */
+/*********************/
+
+.theme-logo {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    font-family: starjedi;
+}
+.theme-logo:before {
+    content: var(--icon);
+    display: block;
+}
+
+p.site-title:before {
+    content: var(--icon);
+    display: block;
+    color: var(--text-color);
+    font-family: starjedi;
+    font-size: 3rem;
+    position: absolute;
+    left: -1.5em;
+    top: 0;
+}
+.site-title a,
+.site-title a:link, 
+.site-title a:visited {
+    color: var(--text-color);
+}
+
+
+/****************************/
+/* Header and footer styles */
+/****************************/
+
+.site-header,
+.site-footer {
+    background-color: var(--bg-color-alt);
+    color: var(--text-color);
+    transition: all .3s;
+}
+
+
+/***************************************/
+/* Titles styles (laser saber on hover)*/
+/***************************************/
+
+.entry-title {
+    font-family: starjedi;
+    letter-spacing: 2px;
+    position: relative;
+    padding-top: 2rem;
+}
+.entry .entry-title:before,
+.entry .entry-title:after {
+    content: "";
+    width: 2rem;
+    height: 4px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    z-index: 1;
+}
+.entry .entry-title:after {
+    content: "";
+    width: 0;
+    left: 2rem;
+    transition: all .2s;
+    z-index: 0;
+}
+.entry .entry-title:hover:after {
+    width: 6rem;
+    background: var(--laser);
+    box-shadow: 0 0 2px 2px var(--laser);
+    border-radius: 50px;
+}
+
+
+/***************************/
+/* Navigations menu styles */
+/***************************/
+
+.main-navigation .main-menu > li > a,
+.social-navigation ul.social-links-menu li a {
+    color: var(--link-color);
+}
+.main-navigation .main-menu > li > a:hover,
+.social-navigation ul.social-links-menu li a:hover {
+    color: var(--link-color-alt);
+}
+
+
+/***************************/
+/* Links and buttons styles */
+/***************************/
+
+a,
+.post-navigation .nav-links a:hover {
+    color: var(--link-color);
+}
+a:hover,
+a:visited,
+a:focus,
+.post-navigation .nav-links a:hover {
+    color: var(--link-color-alt);
+}
+.entry .entry-content .wp-block-button .wp-block-button__link:not(.has-background),
+.entry .entry-content .wp-block-button .wp-block-button__link,
+.button,
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+    background: var(--button);
+    color: var(--button-text);
+}
+.entry .entry-content .wp-block-button .wp-block-button__link:not(.has-background):hover,
+.entry .entry-content .wp-block-button .wp-block-button__link:hover:hover,
+.button:hover, 
+button:hover, 
+input[type="button"]:hover, 
+input[type="reset"]:hover, 
+input[type="submit"]:hover {
+    background: var(--button-alt);
+    color: var(--button-text-alt);
+}
+
+
+/***************************/
+/* Inputs styles */
+/***************************/
+
+input[type="text"], 
+input[type="email"], 
+input[type="url"], 
+input[type="password"], 
+input[type="search"], 
+input[type="number"], 
+input[type="tel"], 
+input[type="range"], 
+input[type="date"], 
+input[type="month"], 
+input[type="week"], 
+input[type="time"], 
+input[type="datetime"], 
+input[type="datetime-local"], 
+input[type="color"], 
+textarea {
+    background: var(--input-bg);
+}
+
+
+/*******************************************/
+/* Front page with background image styles */
+/*******************************************/
+
+.site-header.featured-image .site-branding .site-title, 
+.site-header.featured-image .site-branding .site-description, 
+.site-header.featured-image .main-navigation a:after, 
+.site-header.featured-image .main-navigation .main-menu > li.menu-item-has-children:after, 
+.site-header.featured-image .main-navigation li, 
+.site-header.featured-image .social-navigation li, 
+.site-header.featured-image .entry-meta, 
+.site-header.featured-image .entry-title {
+    color: var(--main-entry-color);
+}
+.site-header.featured-image .main-navigation a, 
+.site-header.featured-image .main-navigation a + svg, 
+.site-header.featured-image .social-navigation a, 
+.site-header.featured-image .site-title a, 
+.site-header.featured-image .site-featured-image a,
+.site-header.featured-image .switch-group label,
+.site-header.featured-image p.site-title:before {
+    color: var(--main-entry-color);
+}
+
+.site-header.featured-image .site-featured-image .entry-header .entry-title:before {
+    background: var(--main-entry-color);
+}
+.site-header.featured-image .main-navigation a:hover, 
+.site-header.featured-image .main-navigation a:active, 
+.site-header.featured-image .main-navigation a:hover + svg, 
+.site-header.featured-image .main-navigation a:active + svg, 
+.site-header.featured-image .main-navigation a + svg:hover, 
+.site-header.featured-image .main-navigation a + svg:active, 
+.site-header.featured-image .main-navigation a + svg:hover + svg, 
+.site-header.featured-image .main-navigation a + svg:active + svg, 
+.site-header.featured-image .social-navigation a:hover, 
+.site-header.featured-image .social-navigation a:active, 
+.site-header.featured-image .social-navigation a:hover + svg, 
+.site-header.featured-image .social-navigation a:active + svg, 
+.site-header.featured-image .site-title a:hover, 
+.site-header.featured-image .site-title a:active, 
+.site-header.featured-image .site-title a:hover + svg, 
+.site-header.featured-image .site-title a:active + svg, 
+.site-header.featured-image .site-featured-image a:hover, 
+.site-header.featured-image .site-featured-image a:active, 
+.site-header.featured-image .site-featured-image a:hover + svg, 
+.site-header.featured-image .site-featured-image a:active + svg,
+.site-header.featured-image .switch-group label:hover {
+    color: var(--main-entry-color);
+    opacity: 0.6;
+}
+
+
+/**************************************/
+/* Theme switcher radio button styles */
+/**************************************/
+
+.switch-group {
+    --width: 1rem;
+    --height: 1rem;
+    --border: 0.2rem;
+    --circle-diameter: 0.6rem;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.switch-group:before {
+    content: '';
+    display: block;
+    border: 1px solid var(--text-color);
+    height: 1rem;
+    width: 0;
+    margin: 0 .5rem;
+}
+.switch-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: min-content;
+    margin: .5rem;
+    border-radius: 25% / 50%;
+}
+.switch-container .switch {
+    position: relative;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: var(--width);
+    height: var(--height);
+    margin: 0;
+    cursor: pointer;
+}
+.switch-container .switch:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+    border: var(--border) solid #666;
+    box-sizing: border-box;
+    background: linear-gradient(#888, #eee);
+}
+.switch-container .switch--left:before {
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    border-right: 0;
+}
+.switch-container .switch--right:before {
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-left: 0;
+}
+.switch-container span {
+    left: calc(0px + var(--border));
+    width: calc(var(--circle-diameter) + (var(--border)) );
+    height: calc(var(--circle-diameter) + (var(--border)) );  
+    border-radius: 50%;
+    box-sizing: content-box;
+    background-color: #ddd;
+    z-index: 2;
+    transition: all .3s ease-in-out;
+}
+.switch-container .switch--left:checked ~ span {
+    display: block;
+    position: absolute;
+    left: calc(0px + var(--border));
+    box-shadow: inset 0 0 10px 5px #999, 1px 0px 5px 1px #666;
+}
+.switch-container .switch--right:checked ~ span {
+    display: block;
+    position: absolute;
+    left: calc( 100% - var(--circle-diameter) - (var(--border)*2) );  
+    box-shadow: inset 0 0 10px 5px #999, -1px 0px 5px 1px #666;  
+}
+.switch-group label {
+    font-family: starjedi;
+    color: var(--link-color);
+    cursor: pointer;
+}
+.switch-group label:hover {
+    color: var(--link-color-alt);
+}
+.switch-group .label-dark:before {
+    content: '#';
+}
+.switch-group .label-light:before {
+    content: '$';
+}
