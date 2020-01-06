@@ -93,17 +93,6 @@ body {
 /* Site title styles */
 /*********************/
 
-.theme-logo {
-    display: block;
-    margin: 0 auto;
-    text-align: center;
-    font-family: starjedi;
-}
-.theme-logo:before {
-    content: var(--icon);
-    display: block;
-}
-
 p.site-title:before {
     content: var(--icon);
     display: block;
