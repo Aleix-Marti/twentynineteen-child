@@ -51,7 +51,12 @@ function checkTheme() {
     }
 }
 
-// Lanzar comprovaciones al cargar la página
+// Lanzar coprobaciones antes de asegurarnos de tener el DOM cargado
+// No genera lag en la carga, pero hay que asegurarse que no necesitamos acceso a ningú elemento del DOM
+// proque podría no haberse cargado aún al ejecutar la función
+// checkTheme();
+
+// Lanzar comprovaciones al cuando todo el DOM esté cargado (puede provocar un poco de lag en la carga)
 document.addEventListener('DOMContentLoaded', () => {
     checkTheme();
 });
