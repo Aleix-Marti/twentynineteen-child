@@ -44,21 +44,17 @@ function checkTime() {
 function checkTheme() {
     let theme = localStorage.getItem('customTheme');
     if( theme && theme != '') {
-        body.setAttribute('data-theme', theme);
+        body.setAttribute('data-theme', theme); // esta línea puede comentarse y lanzarse justo al cargar el tag <body> (ver header.php lineas 24 a 34)
         document.getElementById(theme).checked = true;
     } else {
         checkTime();
     }
 }
 
-// Lanzar coprobaciones antes de asegurarnos de tener el DOM cargado
-// No genera lag en la carga, pero hay que asegurarse que no necesitamos acceso a ningú elemento del DOM
-// proque podría no haberse cargado aún al ejecutar la función
-// checkTheme();
-
-// Lanzar comprovaciones al cuando todo el DOM esté cargado (puede provocar un poco de lag en la carga)
+// Lanzar comprovaciones al cuando todo el DOM esté cargado 
+// Puede provocar un poco de lag en la carga de estilos si se ejecuta la línea 47
+// Si se comenta la línea 47, hay que efectuar la comprobación en header.php lienas 24 a 34
 document.addEventListener('DOMContentLoaded', () => {
     checkTheme();
 });
-
 
